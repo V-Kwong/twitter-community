@@ -1,5 +1,27 @@
 {
   "api": {
+    "AdminQueries": {
+      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "twittercommunity5cbac946"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "AdminQueries729ae30b"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "twittercommunity": {
       "dependsOn": [
         {
@@ -68,6 +90,20 @@
     }
   },
   "function": {
+    "AdminQueries729ae30b": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "twittercommunity5cbac946"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "twittercommunity5cbac946PostConfirmation": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -75,6 +111,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_AdminQueries729ae30b_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries729ae30b"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueries729ae30b_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries729ae30b"
+        }
+      ]
+    },
     "AMPLIFY_function_twittercommunity5cbac946PostConfirmation_GROUP": {
       "usedBy": [
         {
